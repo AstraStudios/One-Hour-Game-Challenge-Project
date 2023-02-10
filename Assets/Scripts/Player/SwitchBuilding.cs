@@ -33,17 +33,6 @@ public class SwitchBuilding : MonoBehaviour
 
     void DisplayCurrentBuilding()
     {
-        switch (selectedBuildingInt)
-        {
-            case 0:
-                currentBuildingToBuildText.text = buildingTypes[selectedBuildingInt];
-                break;
-            case 1:
-                currentBuildingToBuildText.text = buildingTypes[selectedBuildingInt];
-                break;
-            case 2:
-                currentBuildingToBuildText.text = buildingTypes[selectedBuildingInt];
-                break;
-        }
+        currentBuildingToBuildText.text = buildingTypes[selectedBuildingInt];
     }
 }
