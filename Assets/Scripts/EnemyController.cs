@@ -14,17 +14,28 @@ public class EnemyController : MonoBehaviour
     float movementRange = 10f;
     float maxDistance = 30f;
 
-    Vector2 wayPoint;
+    Vector2 currentTarget;
+
+    GameObject[] targetObjects;
 
     // Start is called before the first frame update
     void Start()
     {
+        targetObjects = new GameObject[4];
+        targetObjects[0] = GameObject.FindGameObjectWithTag("Wall");
+        targetObjects[1] = GameObject.FindGameObjectWithTag("Player");
+        targetObjects[2] = GameObject.FindGameObjectWithTag("Defender");
+        targetObjects[3] = GameObject.FindGameObjectWithTag("Farmer");
         SetNewDestination();
     }
 
     // Update is called once per frame
     void Update()
     {
+        targetObjects[0] = GameObject.FindGameObjectWithTag("Wall");
+        targetObjects[1] = GameObject.FindGameObjectWithTag("Player");
+        targetObjects[2] = GameObject.FindGameObjectWithTag("Defender");
+        targetObjects[3] = GameObject.FindGameObjectWithTag("Farmer");
         AttackEnemy();
         LookingForTargets();
     }
@@ -42,6 +53,10 @@ public class EnemyController : MonoBehaviour
                 }
                 if (collider2D.tag == "Wall") {
                     Debug.Log("Hit a wall");
+                }
+                if (collider2D.tag == "Defender")
+                {
+                    Debug.Log("Hit a defender");
                 }
                 if (collider2D.tag == "Player")
                 {
