@@ -63,7 +63,7 @@ public class PlaceBuildings : MonoBehaviour
             wallChild = Instantiate(wall, gridPos, Quaternion.identity);
             wallChild.transform.parent = wallParent.transform;
         }
-        if (Input.GetKeyDown(KeyCode.Q) && wallChild != null)
+        if (Input.GetKeyDown(KeyCode.R) && wallChild != null)
         {
             rotOnKeyDown += 90;
             wallChild.transform.rotation = Quaternion.Euler(0, 0, rotOnKeyDown);

@@ -71,14 +71,14 @@ public class EnemyController : MonoBehaviour
 
     void SetNewDestination()
     {
-        // Find waypoint to go to
-        wayPoint = new Vector2(Random.Range(-maxDistance, maxDistance), Random.Range(-maxDistance, maxDistance));
+        int randIndex = Random.Range(0, targetObjects.Length);
+        currentTarget = targetObjects[randIndex].transform.position;
     }
 
     void LookingForTargets()
     {
-        transform.position = Vector2.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
-        if (Vector2.Distance(transform.position, wayPoint) < movementRange)
+        transform.position = Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, currentTarget) < movementRange)
         {
             SetNewDestination();
         }
