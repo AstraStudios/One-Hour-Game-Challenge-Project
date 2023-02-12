@@ -23,7 +23,6 @@ public class SwitchBuilding : MonoBehaviour
         {
             selectedBuildingInt += 1;
         }
-        Debug.Log("The current building int is: " + selectedBuildingInt);
         if (selectedBuildingInt > 2)
         {
             selectedBuildingInt = 0;
