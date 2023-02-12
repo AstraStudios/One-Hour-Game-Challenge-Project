@@ -6,8 +6,6 @@ using TMPro;
 public class EnemyController : MonoBehaviour
 {
     //Setnewdestination and LookingForTargets are borrowed from another game i made "2D Ai War Game"
-    public int enemyHealth = 15;
-
     private float range = 1f;
     int moveSpeed = 5;
 
@@ -17,6 +15,8 @@ public class EnemyController : MonoBehaviour
     Vector2 currentTarget;
 
     GameObject[] targetObjects;
+
+    HealthManager healthManagerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -50,20 +50,29 @@ public class EnemyController : MonoBehaviour
                 if (collider2D.tag == "Farmer")
                 {
                     Debug.Log("Hit a farmer");
+                    var farmer = GameObject.Find(collider2D.name);
+                    var farmerHealth = farmer.GetComponent<HealthManager>();
+                    farmerHealth.objectHealth -= 1;
                 }
                 if (collider2D.tag == "Wall") {
                     Debug.Log("Hit a wall");
+                    var wall = GameObject.Find(collider2D.name);
+                    var wallHealth = wall.GetComponent<HealthManager>();
+                    wallHealth.objectHealth -= 1;
                 }
                 if (collider2D.tag == "Defender")
                 {
                     Debug.Log("Hit a defender");
+                    var defender = GameObject.Find(collider2D.name);
+                    var defenderHealth = defender.GetComponent<HealthManager>();
+                    defenderHealth.objectHealth -= 1;
                 }
                 if (collider2D.tag == "Player")
                 {
                     Debug.Log(collider2D.name + " got hit! He was hit by " + gameObject.name);
                     var player = GameObject.Find(collider2D.name);
-                    //var playerHealth = redTeamUser.GetComponent<HealthManager>();
-                    //player.health -= 1;
+                    var playerHealth = player.GetComponent<HealthManager>();
+                    playerHealth.objectHealth -= 1;
                 }
             }
         }
