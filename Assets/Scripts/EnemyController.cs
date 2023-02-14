@@ -80,17 +80,8 @@ public class EnemyController : MonoBehaviour
 
     void SetNewDestination()
     {
-        float minDistance = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
-        foreach (GameObject targetObject in targetObjects)
-        {
-            float distance = Vector3.Distance(targetObject.transform.position, currentPosition);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                currentTarget = targetObject.transform.position;
-            }
-        }
+        int randIndex = Random.Range(0, targetObjects.Length);
+        currentTarget = targetObjects[randIndex].transform.position;
     }
 
     void LookingForTargets()
